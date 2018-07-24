@@ -1,23 +1,23 @@
 {
   "name": "@elliottcable/bs-cmdliner",
   "version": "1.0.2",
-  "description": "Cmdliner — Declarative definition of command line interfaces for OCaml ------------------------------------------------------------------------------- %%VERSION%%",
-  "main": "index.js",
+  "description": "Cmdliner — Declarative definition of command line interfaces for OCaml",
+  "main": "src/cmdliner.bs.js",
   "scripts": {
-    "build": "npm run clean && bsb -make-world",
+    "prepare": "npm run clean && bsb -make-world",
     "clean": "bsb -clean-world",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dbuenzli/cmdliner.git"
+    "url": "git+https://github.com/ELLIOTTCABLE/bs-cmdliner.git"
   },
-  "author": "",
+  "author": "Daniel Bünzli <daniel.buenzl i@erratique.ch>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dbuenzli/cmdliner/issues"
+    "url": "https://github.com/ELLIOTTCABLE/bs-cmdliner/issues"
   },
-  "homepage": "https://github.com/dbuenzli/cmdliner#readme",
+  "homepage": "http://erratique.ch/software/cmdliner",
   "dependencies": {
     "bs-platform": "^4.0.1"
   }

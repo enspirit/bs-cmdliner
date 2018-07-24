@@ -2,6 +2,7 @@ _build
 _b0
 tmp
 lib/bs
+lib/ocaml
 node_modules
 *~
 \.\#*
