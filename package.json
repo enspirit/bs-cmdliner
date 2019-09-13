@@ -1,6 +1,6 @@
 {
   "name": "@elliottcable/bs-cmdliner",
-  "version": "1.0.2",
+  "version": "10.2.1",
   "description": "Cmdliner — Declarative definition of command line interfaces for OCaml",
   "main": "src/cmdliner.bs.js",
   "keywords": [
