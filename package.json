@@ -3,6 +3,18 @@
   "version": "1.0.2",
   "description": "Cmdliner — Declarative definition of command line interfaces for OCaml",
   "main": "src/cmdliner.bs.js",
+  "keywords": [
+    "BuckleScript",
+    "ReasonML",
+    "OCaml",
+    "argv",
+    "args",
+    "getopt",
+    "parser",
+    "CLI",
+    "minimist",
+    "yargs"
+  ],
   "scripts": {
     "prepare": "npm run clean && bsb -make-world",
     "clean": "bsb -clean-world",
