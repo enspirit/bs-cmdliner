@@ -30,7 +30,10 @@
     "url": "https://github.com/ELLIOTTCABLE/bs-cmdliner/issues"
   },
   "homepage": "http://erratique.ch/software/cmdliner",
-  "dependencies": {
-    "bs-platform": "^4.0.1"
+  "devDependencies": {
+    "bs-platform": "^5.0.6"
+  },
+  "peerDependencies": {
+    "bs-platform": ">=4.0.0"
   }
 }
