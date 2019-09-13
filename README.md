@@ -123,6 +123,7 @@ port into the patch-component. `/=`
 > compile. (There's a reason I didn't stomp on the npm package names
 > outside my own scope! `;)`)
 
+   [npm]: <https://www.npmjs.com/>
    [BuckleScript]: <https://bucklescript.github.io/>
    [Reason]: <https://reasonml.github.io/>
    [process-argv]: <https://nodejs.org/api/process.html#process_process_argv>
