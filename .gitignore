@@ -11,3 +11,4 @@ node_modules
 *.native
 *.bs.js
 cmdliner.install
+**/.merlin
