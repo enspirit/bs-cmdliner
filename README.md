@@ -7,19 +7,52 @@ alternative OCaml syntax targeting that compiler.)
 You can safely ignore the installation instructions below when compiling
 to JS. Instead:
 
-1. Install this fork through npm:
+1. If you're writing an app or a similar end-consumer project, install
+   BuckleScript compiler (a peerDependency of this project) via [npm][].
 
-        npm install --save @elliottcable/bs-cmdliner
+   ```sh
+   $ npm install --save bs-platform
+   ```
 
-2. Manually add `bs-cmdliner` to your `bsconfig.json`'s
+   Worh repeating: _do not add this dependency to a library!_ The final
+   application-developer should generally select the version of the
+   BuckleScript compiler; you don't want users having duplicated
+   versions of the compiler in their `node_modules`. Instead, library
+   developers should add `bs-platform` to both `"peerDependencies"`
+   (with a permissive version), and `"devDependencies"` (with a
+   restrictive version):
+
+   ```sh
+   $ npm install --save-dev bs-platform
+   ```
+
+   ```diff
+    "devDependencies": {
+      ...
+      "bs-platform": "^5.0.0"
+    },
+    "peerDependencies": {
+   +  "bs-platform": "4.x || 5.x" // example. express the versions of BuckleScript you support here.
+    },
+   ```
+
+2. Install `bs-cmdliner` as a runtime-dependency.
+
+   ```sh
+   npm install --save @elliottcable/bs-cmdliner
+   ```
+
+3. Manually add `bs-cmdliner` to your `bsconfig.json`'s
    `bs-dependencies`:
 
-        "bs-dependencies": [
-          ...
-          "@elliottcable/bs-cmdliner"
-        ],
+   ```sh
+   "bs-dependencies": [
+     ...
+     "@elliottcable/bs-cmdliner"
+   ],
+   ```
 
-3. Write a CLI!
+4. Write a CLI!
 
 The usage docs are below, but one thing worth noting, is that [Node.js
 doesn't follow the POSIX standard for `argv`][process-argv]; so you need
@@ -48,16 +81,47 @@ let hello_t = Term.(const(hello) $ const());
 let () = Term.exit @@ Term.eval((hello_t, Term.info("wrange")));
 ```
 
+## Versioning of this package
+
+Thanks to [SemVer not including a ‘generation’ number][semver-213],
+there's really no way I can reasonably tie this project's version on npm
+to the upstream version of Cmdliner as released to opam by Daniel. As
+ugly as it is, I've opted to pin the _major version_ of `bs-cmdliner`,
+to the _flattened_ major and minor versions of the upstream project.
+
+This means that the ported versions would look something like this:
+
+| cmdliner (opam) | `bs-cmdliner` (npm) |
+| --------------- | ------------------- |
+| `v1.0.2`        | `v10.2.x`           |
+| `v1.0.4`        | `v10.4.x`           |
+
+(I'm applying this scheme as of `bs-cmdliner` **v10.2.1**.)
+
+Correspondingly, this project can't really strictly adhere to SemVer; I
+have no control over the major/minor components of `bs-cmdliner`'s
+published versions, and thus must compress breaking changes to the npm
+port into the patch-component. `/=`
+
+[semver-213]: https://github.com/semver/semver/issues/213#issuecomment-266914818 "A discussion around extending SemVer with an additional, human-focused major component"
+
 > **NOTE:** OCaml doesn't often move fast; and I can't say I have much
 > intention to follow the upstream development of Cmdliner with a
 > microscope. As of right now, BuckleScript (4.02.3) is pretty far
-> behind upstream OCaml (4.07.0) *anyway*, so I'm fairly worried that
-> future versions of Cmdliner won't compile on BuckleScript.
+> behind upstream OCaml (4.08.0); and while there's a beta-release of a
+> slightly-less-vastly-outdated version of BuckleScript out there
+> (specifically, 4.06.1), it hasn't reached maturity yet.
 >
-> In any case, feel free to reach out directly if you want me to bump
-> the version on npm. No promises, though, if substantial changes to the
-> source are necessary to make it compile. (There's a reason I didn't
-> stomp on the npm package names outside my own scope! `;)`)
+> As upstream Cmdliner has dropped support for 4.02.3; and
+> BuckleScript's 4.06.1 release hasn't reached stability yet, I'm opting
+> to not publish newer versions of Cmdliner to npm yet — this includes,
+> as of this writing, Cmdliner 1.0.3 and 1.0.4.
+>
+> If this affects you, and you are on 4.06.1 already, feel free to reach
+> out directly if you want me to bump the version on npm. No promises,
+> though, if substantial changes to the source are necessary to make it
+> compile. (There's a reason I didn't stomp on the npm package names
+> outside my own scope! `;)`)
 
    [BuckleScript]: <https://bucklescript.github.io/>
    [Reason]: <https://reasonml.github.io/>
