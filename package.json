@@ -1,6 +1,6 @@
 {
   "name": "@enspirit/bs-cmdliner",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Cmdliner — Declarative definition of command line interfaces for OCaml",
   "main": "src/cmdliner.bs.js",
   "keywords": [
