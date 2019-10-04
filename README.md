@@ -4,6 +4,10 @@ This is Cmdliner, a CLI-interface building tool for OCaml, packaged for
 [BuckleScript][] (an OCaml-to-JavaScript compiler) and [Reason][] (an
 alternative OCaml syntax targeting that compiler.)
 
+IMPORTANT: this is a fork of the bindings by ELLIOTCABLE. This is just a
+temporary version which I need to publish a dependent app, waiting for some pull
+request to be merged. Not meant to replace ELLIOTCABLE's bindings at all.
+
 You can safely ignore the installation instructions below when compiling
 to JS. Instead:
 

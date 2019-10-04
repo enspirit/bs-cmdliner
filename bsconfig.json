@@ -1,6 +1,6 @@
 {
-  "name": "@elliottcable/bs-cmdliner",
-  "version": "1.0.2",
+  "name": "@enspirit/bs-cmdliner",
+  "version": "0.1",
   "sources": [
     {
        "dir": "src"
